@@ -9,21 +9,35 @@
 import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from './components/HelloWorld.vue'
 
-@Component({
-  components: {
-    HelloWorld
+  @Component({
+    components: {
+      HelloWorld
+    }
+  })
+export default class App extends Vue {
+  created () {
+    this.$agent.connect({
+      // host: 'localhost',
+      host: 'broker.orangepixel.hu',
+      port: 1884,
+      username: 'eexit',
+      protocol: 'wss',
+      password: 'Cirkusz1984',
+      clientId: 'eexit_dashboard' + Math.random().toString(16).substr(2, 8)
+    })
+
+    this.$agent.subscribe('#')
   }
-})
-export default class App extends Vue {}
+}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
