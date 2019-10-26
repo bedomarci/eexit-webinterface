@@ -6,15 +6,8 @@ export default class MQTTAgent {
   private _store: any = null;
 
   set store (value: any) {
-    console.log('value')
     this._store = value
   }
-
-  // set store (value: Vuex.Store) {
-  //   console.log(this._store)
-  //   this._store = value
-  //   console.log(this._store)
-  // }
 
   get client (): mqtt.MqttClient {
     if (this._client === null) {
@@ -23,9 +16,17 @@ export default class MQTTAgent {
     return this._client
   }
 
+  registerTopicPrefix (prefix : string) : void {
+    this._store.commit('nodes/setBaseTopicPrefix', prefix)
+  }
+
+  registerNode (baseTopic : string) : void{
+    this._store.commit('nodes/addBaseTopic', baseTopic)
+  }
+
   connect (options: any): void {
     this._client = mqtt.connect(options)
-    this._client.on('message', this.onMessage)
+    this._client.on('message', this.onMessage.bind(this))
     this._client.on('connect', this.onConnect)
     this._client.on('reconnect', this.onReconnect)
     this._client.on('close', this.onClose)
@@ -38,9 +39,7 @@ export default class MQTTAgent {
   }
 
   onMessage (topic: string, message: Buffer): void {
-    console.log(topic + ' - ' + message.toString())
-    console.log(this._store)
-    this._store.dispatch('nodes/message', { topic: topic, message: message.toString() })
+    this._store.dispatch('nodes/processMessage', { topic: topic, message: message.toString() })
   }
 
   onConnect (): void {

@@ -26,7 +26,9 @@ export default class App extends Vue {
       password: 'Cirkusz1984',
       clientId: 'eexit_dashboard' + Math.random().toString(16).substr(2, 8)
     })
-
+    this.$agent.registerTopicPrefix('EEXIT/')
+    this.$agent.registerNode('MTLOTTERY')
+    this.$agent.registerNode('MTMINIMETRO')
     this.$agent.subscribe('EEXIT/+/hrtbt')
   }
 }

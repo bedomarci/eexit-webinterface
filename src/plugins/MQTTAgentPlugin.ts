@@ -1,8 +1,9 @@
 import _Vue, { PluginObject } from 'vue'
 import mqtt from 'mqtt'
 import Vuex from 'vuex'
-import nodeStoreModule from './NodeStoreModule'
+import NodeStoreModule from './NodeStoreModule'
 import MQTTAgent from './MQTTAgent'
+import { getModule } from 'vuex-module-decorators'
 
 // export class MQTTAgentPluginOptions {
 //   constructor (store: Vuex.Store) {
@@ -22,7 +23,8 @@ export default class MQTTAgentPlugin implements PluginObject<Vuex.Store> {
 
   install (Vue: typeof _Vue, store: Vuex.Store) {
     this._agent.store = store
-    store.registerModule('nodes', nodeStoreModule)
+    // const nodeStoreModule = getModule(NodeStoreModule, store)
+    store.registerModule('nodes', NodeStoreModule)
     Vue.prototype.$agent = this._agent
   }
 }
