@@ -21,10 +21,8 @@ export default class MQTTAgentPlugin implements PluginObject<Vuex.Store> {
   }
 
   install (Vue: typeof _Vue, store: Vuex.Store) {
-  // install (Vue: typeof _Vue, options: MQTTAgentPluginOptions) {
-    store.registerModule('nodes', nodeStoreModule)
     this._agent.store = store
-    Vue.agent = this._agent
+    store.registerModule('nodes', nodeStoreModule)
     Vue.prototype.$agent = this._agent
   }
 }
