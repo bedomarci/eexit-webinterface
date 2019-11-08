@@ -7,6 +7,8 @@ import { MQTTAgentPluginOptions } from '@/plugins/MQTTAgentPlugin'
 Vue.config.productionTip = false
 // let options = new MQTTAgentPluginOptions(store)
 
+console.log(store)
+
 Vue.use(new MQTTAgentPlugin(), store)
 
 new Vue({

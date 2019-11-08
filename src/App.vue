@@ -2,18 +2,26 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+
+    <span>Message: {{ MTMINIMETRO['/hrtbt'] }}</span><br>
+    <span>Message: {{ interface('MTLOTTERY', '/hrtbt') }}</span>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { mapState, mapGetters } from 'vuex'
 import HelloWorld from './components/HelloWorld.vue'
 
-  @Component({
-    components: {
-      HelloWorld
-    }
-  })
+@Component({
+  components: {
+    HelloWorld
+  },
+  computed: {
+    ...mapState('nodes', ['MTMINIMETRO', 'MTLOTTERY']),
+    ...mapGetters('nodes', ['node', 'interface'])
+  }
+})
 export default class App extends Vue {
   created () {
     this.$agent.connect({

@@ -1,8 +1,7 @@
 import mqtt from 'mqtt'
-import Vuex from 'vuex'
 
 export default class MQTTAgent {
-  private _client: mqtt.MqttClient;
+  private _client: any = null;
   private _store: any = null;
 
   set store (value: any) {
@@ -40,6 +39,7 @@ export default class MQTTAgent {
 
   onMessage (topic: string, message: Buffer): void {
     this._store.dispatch('nodes/processMessage', { topic: topic, message: message.toString() })
+    // console.log(message.toString())
   }
 
   onConnect (): void {
