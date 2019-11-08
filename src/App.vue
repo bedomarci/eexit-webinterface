@@ -3,8 +3,11 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
 
-    <span>Message: {{ MTMINIMETRO['/hrtbt'] }}</span><br>
-    <span>Message: {{ interface('MTLOTTERY', '/hrtbt') }}</span>
+    <span>MTMINIMETRO: {{ interface('MTMINIMETRO', '/hrtbt') }}</span><br>
+    <span>MTLOTTERY: {{ interface('MTLOTTERY', '/hrtbt') }}</span><br>
+    <span>MTEDISON: {{ interface('MTEDISON', '/hrtbt') }}</span><br>
+    <span>MTDRAWER: {{ interface('MTDRAWER', '/hrtbt') }}</span><br>
+    <span>MTPIPE: {{ interface('MTPIPE', '/hrtbt') }}</span><br>
   </div>
 </template>
 
@@ -37,6 +40,9 @@ export default class App extends Vue {
     this.$agent.registerTopicPrefix('EEXIT/')
     this.$agent.registerNode('MTLOTTERY')
     this.$agent.registerNode('MTMINIMETRO')
+    this.$agent.registerNode('MTEDISON')
+    this.$agent.registerNode('MTDRAWER')
+    this.$agent.registerNode('MTPIPE')
     this.$agent.subscribe('EEXIT/+/hrtbt')
   }
 }
