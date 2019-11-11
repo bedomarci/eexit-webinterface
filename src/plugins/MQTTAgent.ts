@@ -38,8 +38,7 @@ export default class MQTTAgent {
   }
 
   onMessage (topic: string, message: Buffer): void {
-    this._store.dispatch('nodes/processMessage', { topic: topic, message: message.toString() })
-    // console.log(message.toString())
+    this._store.dispatch('nodes/storeMessage', { topic: topic, message: message.toString() })
   }
 
   onConnect (): void {
