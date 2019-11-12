@@ -1,23 +1,63 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
 
-    <span>MTLOTTERY: {{ interface('MTLOTTERY', '/hrtbt') }} {{ interface('MTLOTTERY', 'online') }}</span><br>
-    <span>MTMINIMETRO: {{ interface('MTMINIMETRO', '/hrtbt') }} {{ interface('MTMINIMETRO', 'online') }}</span><br>
-    <span>MTEDISON: {{ interface('MTEDISON', '/hrtbt') }} {{ interface('MTEDISON', 'online') }}</span><br>
-    <span>MTDRAWER: {{ interface('MTDRAWER', '/hrtbt') }} {{ interface('MTDRAWER', 'online') }}</span><br>
-    <span>MTPIPE: {{ interface('MTPIPE', '/hrtbt') }} {{ interface('MTPIPE', 'online') }}</span><br>
-  </div>
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <HelloWorld/>
+      <span>MTMETRODIMMER: {{ interface('MTMETRODIMMER', '/hrtbt') }} {{ interface('MTMETRODIMMER', 'online') }}</span><br>
+      <span>MTMETROCONSOLE: {{ interface('MTMETROCONSOLE', '/hrtbt') }} {{ interface('MTMETROCONSOLE', 'online') }}</span><br>
+      <span>MTEDISON: {{ interface('MTEDISON', '/hrtbt') }} {{ interface('MTEDISON', 'online') }}</span><br>
+      <span>MTDRAWER: {{ interface('MTDRAWER', '/hrtbt') }} {{ interface('MTDRAWER', 'online') }}</span><br>
+      <span>MTPIPE: {{ interface('MTPIPE', '/hrtbt') }} {{ interface('MTPIPE', 'online') }}</span><br>
+      <InterfaceIndicatorBase node="MTMETRODIMMER" interface="/hrtbt"></InterfaceIndicatorBase>
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters } from 'vuex'
 import HelloWorld from './components/HelloWorld.vue'
+import HeartbeatInterface from './components/HeartbeatInterface.vue'
 
 @Component({
   components: {
+    InterfaceIndicatorBase: HeartbeatInterface,
     HelloWorld
   },
   computed: {
@@ -38,6 +78,8 @@ export default class App extends Vue {
       clientId: 'eexit_dashboard' + Math.random().toString(16).substr(2, 8)
     })
     this.$agent.registerTopicPrefix('EEXIT/')
+    this.$agent.registerNode('MTMETRODIMMER')
+    this.$agent.registerNode('MTMETROCONSOLE')
     this.$agent.registerNode('MTLOTTERY')
     this.$agent.registerNode('MTMINIMETRO')
     this.$agent.registerNode('MTEDISON')

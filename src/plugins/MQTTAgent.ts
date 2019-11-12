@@ -23,11 +23,18 @@ export default class MQTTAgent {
     this._store.commit('nodes/addBaseTopic', baseTopic)
   }
 
+  registerInterface (baseTopic : string, subTopic:string):void {
+    let prefix:string = this._store.state.nodes._baseTopicPrefix
+    // this.client.subscribe(prefix + baseTopic + subTopic)
+    let subscription = prefix + baseTopic + subTopic
+    this._store.commit('nodes/addSubscription', subscription)
+  }
+
   connect (options: any): void {
     this._client = mqtt.connect(options)
     this._client.on('message', this.onMessage.bind(this))
-    this._client.on('connect', this.onConnect)
-    this._client.on('reconnect', this.onReconnect)
+    this._client.on('connect', this.onConnect.bind(this))
+    this._client.on('reconnect', this.onReconnect.bind(this))
     this._client.on('close', this.onClose)
     this._client.on('offline', this.onOffline)
   }
@@ -42,7 +49,11 @@ export default class MQTTAgent {
   }
 
   onConnect (): void {
-    console.log('connect')
+    console.log('connected')
+    let subscriptions = this._store.state.nodes._subscriptions
+    subscriptions.forEach(function (topic, index) {
+      this.subscribe(topic)
+    }.bind(this))
   }
 
   onReconnect (): void {

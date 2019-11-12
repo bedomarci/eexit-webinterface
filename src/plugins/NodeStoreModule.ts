@@ -6,6 +6,7 @@ const NodeStoreModule: Module<any, any> = {
   namespaced: true,
   state: {
     _baseTopics: [],
+    _subscriptions: [],
     _baseTopicPrefix: ''
   },
   mutations: {
@@ -21,6 +22,11 @@ const NodeStoreModule: Module<any, any> = {
     saveNodeState (state: any, payload: any) {
       // let subTopic = payload.topic.substr(state._baseTopicPrefix.length + payload.baseTopic.length)
       Vue.set(state[payload.baseTopic], payload.subTopic, payload.message)
+    },
+    addSubscription (state: any, payload: string) {
+      if (state._subscriptions.indexOf(payload) === -1) {
+        state._subscriptions.push(payload)
+      }
     }
   },
   getters: {

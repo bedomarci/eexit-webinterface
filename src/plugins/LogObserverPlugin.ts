@@ -8,7 +8,7 @@ const ARCHIVE_CAPACITY = 4
 export default class LogObserverPlugin implements PluginObject<Vuex.Store> {
   install (Vue: typeof _Vue, store: Vuex.Store) {
     EventBus.$on(PAYLOAD_SAVED, (payload) => {
-      if (payload.subTopic === '/hrtbt') {
+      if (payload.subTopic === '/log') {
         payload.subTopic = ARCHIVE_KEY
         payload.limit = ARCHIVE_CAPACITY
         store.dispatch('nodes/accumlateMessage', payload)

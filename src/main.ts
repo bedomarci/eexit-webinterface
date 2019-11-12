@@ -2,16 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import MQTTAgentPlugin from './plugins/MQTTAgentPlugin'
-import { MQTTAgentPluginOptions } from '@/plugins/MQTTAgentPlugin'
+import vuetify from './vuetify'
+import router from './router'
+import Layout from '@/layouts/Layout.vue'
 
 Vue.config.productionTip = false
-// let options = new MQTTAgentPluginOptions(store)
-
-console.log(store)
-
 Vue.use(new MQTTAgentPlugin(), store)
 
 new Vue({
   store,
-  render: h => h(App)
+  vuetify,
+  router,
+  render: h => h(Layout)
 }).$mount('#app')
