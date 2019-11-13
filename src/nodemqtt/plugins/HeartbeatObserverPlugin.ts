@@ -1,12 +1,12 @@
 import _Vue, { PluginObject } from 'vue'
 import Vuex from 'vuex'
-import EventBus, { DEVICE_OFFLINE, DEVICE_ONLINE, SAVING_PAYLOAD } from './EventBus'
+import EventBus, { DEVICE_OFFLINE, DEVICE_ONLINE, SAVING_PAYLOAD } from '../events/EventBus'
 
-export default class HeartbeatObserverPlugin implements PluginObject<Vuex.Store> {
+export default class HeartbeatObserverPlugin implements PluginObject<any> {
     private _hearts: any[] = [];
     private _store: Vuex.Store;
 
-    install (Vue: typeof _Vue, store: Vuex.Store) {
+    install (Vue: typeof _Vue, { store }) {
       this._store = store
       EventBus.$on(SAVING_PAYLOAD, (payload) => {
         if (payload.subTopic === '/hrtbt') {

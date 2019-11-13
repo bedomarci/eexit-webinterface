@@ -9,7 +9,7 @@
 </template>
 <script lang='ts'>
 import Component from 'vue-class-component'
-import NodeInterfaceBase from '@/components/NodeInterfaceBase.vue'
+import NodeInterfaceBase from '@/nodemqtt/components/interfaces/NodeInterfaceBase.vue'
 import { mapState } from 'vuex'
 
 @Component({

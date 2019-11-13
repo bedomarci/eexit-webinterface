@@ -53,7 +53,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters } from 'vuex'
 import HelloWorld from './components/HelloWorld.vue'
-import HeartbeatInterface from './components/HeartbeatInterface.vue'
+import HeartbeatInterface from './nodemqtt/components/interfaces/HeartbeatInterface.vue'
 
 @Component({
   components: {

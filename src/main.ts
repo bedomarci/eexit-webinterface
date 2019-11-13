@@ -1,17 +1,38 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
-import MQTTAgentPlugin from './plugins/MQTTAgentPlugin'
-import vuetify from './vuetify'
-import router from './router'
-import Layout from '@/layouts/Layout.vue'
+import MQTTAgentPlugin from './nodemqtt/plugins/MQTTAgentPlugin'
+import vuetify from './plugins/vuetify'
+import router from './plugins/router'
+import Layout from '@/nodemqtt/layouts/Layout.vue'
+import GameContainer from '@/nodemqtt/layouts/GameContainer.vue'
 
 Vue.config.productionTip = false
-Vue.use(new MQTTAgentPlugin(), store)
+
+let gameConfig = {
+  server: {
+    // host: 'localhost',
+    host: 'broker.orangepixel.hu',
+    port: 8884,
+    username: 'eexit',
+    rejectUnauthorized: false,
+    protocol: 'wss',
+    password: 'Cirkusz1984',
+    clientId: 'eexit_dashboard' + Math.random().toString(16).substr(2, 8)
+  },
+  gameId: 'secret-subway',
+  gameName: 'Secret Subway',
+  targetTime: 60,
+  defaultLanguage: 'HUN',
+  languages: ['HUN', 'ENG'],
+  languageDependentNodes: ['ABC', 'ASD', 'A23']
+}
+
+Vue.use(new MQTTAgentPlugin(), { store: store, config: gameConfig })
 
 new Vue({
   store,
   vuetify,
   router,
-  render: h => h(Layout)
+  render: h => h(GameContainer, { props: { config: gameConfig } })
 }).$mount('#app')

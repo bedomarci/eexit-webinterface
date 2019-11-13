@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex, { Module } from 'vuex'
-import EventBus, { SAVING_PAYLOAD, PAYLOAD_SAVED } from './EventBus'
+import EventBus, { SAVING_PAYLOAD, PAYLOAD_SAVED } from '../events/EventBus'
 
 const NodeStoreModule: Module<any, any> = {
   namespaced: true,

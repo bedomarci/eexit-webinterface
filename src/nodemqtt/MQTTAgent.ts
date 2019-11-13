@@ -44,6 +44,13 @@ export default class MQTTAgent {
     this._client.subscribe(topic)
   }
 
+  publish (topic: string, payload:string|Object): void {
+    if (typeof payload === 'object') { payload = JSON.stringify(payload) }
+    var prefix = this._store.state.nodes['_baseTopicPrefix']
+    if (prefix) topic = prefix + topic
+    console.log(topic + '-' + payload)
+  }
+
   onMessage (topic: string, message: Buffer): void {
     this._store.dispatch('nodes/storeMessage', { topic: topic, message: message.toString() })
   }
@@ -51,7 +58,7 @@ export default class MQTTAgent {
   onConnect (): void {
     console.log('connected')
     let subscriptions = this._store.state.nodes._subscriptions
-    subscriptions.forEach(function (topic, index) {
+    subscriptions.forEach(function (topic) {
       this.subscribe(topic)
     }.bind(this))
   }
