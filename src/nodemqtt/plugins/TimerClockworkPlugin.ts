@@ -7,6 +7,7 @@ const ARCHIVE_CAPACITY = 4
 
 export default class TimerClockworkPlugin implements PluginObject<any> {
   timers: any[] = []
+
   install (Vue: typeof _Vue, { store, config }) {
     EventBus.$on(START_TIMER, (payload: any) => {
       if (this.timers[payload.gameId]) return

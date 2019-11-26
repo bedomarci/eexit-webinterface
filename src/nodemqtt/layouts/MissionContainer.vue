@@ -9,7 +9,10 @@
           <MissionForecaster></MissionForecaster>
         </v-card>
       </v-col>
+    </v-row>
 
+    <v-row>
+      <HeartbeatIcon node="MTMETRODIMMER" interface="/hrtbt" ></HeartbeatIcon>
     </v-row>
 
     <v-footer
@@ -29,9 +32,10 @@
 import Component from 'vue-class-component'
 import ComponentBase from '../components/ComponentBase.vue'
 import MissionForecaster from '../components/MissionForecaster.vue'
+import HeartbeatIcon from '../components/interfaces/HeartbeatIcon.vue'
 
   @Component({
-    components: { MissionForecaster },
+    components: { MissionForecaster, HeartbeatIcon },
     props: {
       config: Object
     }

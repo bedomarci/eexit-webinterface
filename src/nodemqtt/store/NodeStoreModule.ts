@@ -30,10 +30,10 @@ const NodeStoreModule: Module<any, any> = {
     }
   },
   getters: {
-    interface (state: any) {
+    getInterface (state: any) {
       return (node: string, nodeInterface: string) => state[node][nodeInterface]
     },
-    node (state: any) {
+    getNode (state: any) {
       return (node: string) => state[node]
     }
   },

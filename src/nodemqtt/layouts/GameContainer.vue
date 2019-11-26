@@ -4,7 +4,9 @@
     <GameContainerSidebar v-bind:config="config"></GameContainerSidebar>
     <v-content>
       <v-container>
-              <MissionContainer v-bind:config="config"></MissionContainer>
+              <MissionContainer v-bind:config="config">
+
+              </MissionContainer>
       </v-container>
     </v-content>
     <GameContainerFooter v-bind:config="config"></GameContainerFooter>

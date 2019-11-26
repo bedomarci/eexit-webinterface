@@ -4,7 +4,7 @@ import store from './store'
 import MQTTAgentPlugin from './nodemqtt/plugins/MQTTAgentPlugin'
 import vuetify from './plugins/vuetify'
 import router from './plugins/router'
-import Layout from '@/nodemqtt/layouts/Layout.vue'
+// import Layout from '@/nodemqtt/layouts/Layout.vue'
 import GameContainer from '@/nodemqtt/layouts/GameContainer.vue'
 
 Vue.config.productionTip = false
@@ -32,7 +32,7 @@ Vue.use(new MQTTAgentPlugin(), { store: store, config: gameConfig })
 
 new Vue({
   store,
-  vuetify,
   router,
+  vuetify,
   render: h => h(GameContainer, { props: { config: gameConfig } })
 }).$mount('#app')

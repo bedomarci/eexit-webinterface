@@ -11,6 +11,11 @@ const ON_STATE_CHANGE_FUNCTION_NAME = 'onStateChange'
   },
   components: {
 
+  },
+  filters: {
+    fallback: function (value:any) {
+      return value || 'n/a'
+    }
   }
 })
 export default class NodeInterfaceBase extends Vue {

@@ -58,19 +58,19 @@ const GameStoreModule: Module<any, any> = {
   },
   getters: {
     targetTime (state: any) {
-      return gameId => moment().startOf('day').second(state[gameId] ? state[gameId].targetTime : 0)
+      return (gameId :any) => moment().startOf('day').second(state[gameId] ? state[gameId].targetTime : 0)
     },
     elapsedTime (state: any) {
-      return gameId => moment().startOf('day').second(state[gameId] ? state[gameId].elapsedTime : 0)
+      return (gameId :any) => moment().startOf('day').second(state[gameId] ? state[gameId].elapsedTime : 0)
     },
     remainingTime (state: any, getters: any) {
-      return gameId => getters.targetTime(gameId).diff(getters.elapsedTime(gameId), 'seconds')
+      return (gameId :any) => getters.targetTime(gameId).diff(getters.elapsedTime(gameId), 'seconds')
     },
     elapsedTimeFormatted (state: any, getters: any) {
-      return gameId => getters.elapsedTime(gameId).format('HH:mm:ss')
+      return (gameId :any) => getters.elapsedTime(gameId).format('HH:mm:ss')
     },
     remainingTimeFormatted (state: any, getters: any) {
-      return gameId => {
+      return (gameId :any) => {
         let remainingSeconds = Math.abs(getters.remainingTime(gameId))
         return moment().startOf('day').second(remainingSeconds).format('HH:mm:ss')
       }

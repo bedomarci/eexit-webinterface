@@ -17,7 +17,7 @@ export default class MQTTAgentPlugin implements PluginObject<any> {
     return this.agent.client
   }
 
-  install (Vue: typeof _Vue, options) {
+  install (Vue: typeof _Vue, options : any) {
     this.agent.store = options.store
     options.store.registerModule('nodes', NodeStoreModule)
     options.store.registerModule('game', GameStoreModule)
