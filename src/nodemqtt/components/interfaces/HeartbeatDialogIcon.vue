@@ -1,11 +1,11 @@
-<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<template>
+  <div>
+  <HeartbeatIcon v-bind:node="node" @click="dialog = true" interface="/hrtbt" ></HeartbeatIcon>
   <v-dialog v-model="dialog" max-width="50%">
-    <template v-slot:activator="{ on }">
-      <slot name="activator" v-bind:on="on"  ></slot>
-    </template>
     <v-card>
-      <v-card-title class="headline">{{node}}</v-card-title>
+      <v-card-title class="headline">{{node.baseTopic}}</v-card-title>
       <v-card-text>
+        <v-fade-transition>
         <v-simple-table v-if="this.state">
         <tbody>
           <tr>
@@ -33,9 +33,10 @@
           </tr>
         </tbody>
         </v-simple-table>
-        <v-alert type="info" v-if="!this.state">
-          No heartbeat has been received yet!
-        </v-alert>
+        </v-fade-transition>
+        <v-fade-transition>
+        <DataNotAvailable v-model="this.state"></DataNotAvailable>
+        </v-fade-transition>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -43,6 +44,7 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+  </div>
 </template>
 
 <script lang="ts">
@@ -50,17 +52,19 @@ import Component from 'vue-class-component'
 import NodeInterfaceBase from '@/nodemqtt/components/interfaces/NodeInterfaceBase.vue'
 import { mapGetters, mapState } from 'vuex'
 import moment from 'moment'
+import HeartbeatIcon from './HeartbeatIcon.vue'
+import DataNotAvailable from '../DataNotAvailable.vue'
   @Component({
     props: {
 
     },
-    components: {},
+    components: { DataNotAvailable, HeartbeatIcon },
     computed: {
       ...mapState('nodes', ['online']),
       ...mapGetters('nodes', ['getNode', 'getInterface'])
     }
   })
-export default class HeartbeatIcon extends NodeInterfaceBase {
+export default class HeartbeatDialogIcon extends NodeInterfaceBase {
     dialog : boolean = false
     now: any = moment()
 

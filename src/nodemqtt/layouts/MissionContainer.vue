@@ -12,7 +12,10 @@
     </v-row>
 
     <v-row>
-      <HeartbeatIcon node="MTMETRODIMMER" interface="/hrtbt" ></HeartbeatIcon>
+      <HeartbeatDialogIcon v-bind:node="config.nodes[0]" interface="/hrtbt" ></HeartbeatDialogIcon>
+      <ConfigDialogIcon v-bind:node="config.nodes[0]" v-bind:interface="['/cfg', '/cfgecho']" ></ConfigDialogIcon>
+      <LogDialogIcon v-bind:node="config.nodes[0]" interface="/log"></LogDialogIcon>
+      <StateControlIcon v-bind:node="config.nodes[0]" interface="/log"></StateControlIcon>
     </v-row>
 
     <v-footer
@@ -32,10 +35,13 @@
 import Component from 'vue-class-component'
 import ComponentBase from '../components/ComponentBase.vue'
 import MissionForecaster from '../components/MissionForecaster.vue'
-import HeartbeatIcon from '../components/interfaces/HeartbeatIcon.vue'
+import HeartbeatDialogIcon from '../components/interfaces/HeartbeatDialogIcon.vue'
+import ConfigDialogIcon from '../components/interfaces/ConfigDialogIcon.vue'
+import LogDialogIcon from '../components/interfaces/LogDialogIcon.vue'
+import StateControlIcon from '../components/interfaces/StateControlIcon.vue'
 
   @Component({
-    components: { MissionForecaster, HeartbeatIcon },
+    components: { LogDialogIcon, ConfigDialogIcon, MissionForecaster, HeartbeatDialogIcon, StateControlIcon },
     props: {
       config: Object
     }

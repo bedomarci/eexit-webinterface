@@ -2,15 +2,16 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Prop, Watch } from 'vue-property-decorator'
-import { Action, Getter } from 'vuex'
+import { mapGetters } from 'vuex'
 
 const ON_STATE_CHANGE_FUNCTION_NAME = 'onStateChange'
 
 @Component({
-  props: {
-  },
   components: {
 
+  },
+  computed: {
+    ...mapGetters('nodes', ['getInterface', 'getNode'])
   },
   filters: {
     fallback: function (value:any) {
@@ -19,14 +20,21 @@ const ON_STATE_CHANGE_FUNCTION_NAME = 'onStateChange'
   }
 })
 export default class NodeInterfaceBase extends Vue {
-  @Prop({ required: true }) private node: string;
-  @Prop({ required: true }) private interface: string;
-  // @Getter getNode
-  // @Getter getInterface
+  @Prop({ required: true }) private node: Object;
+  @Prop({ required: true }) private interface: any;
+  private interfacePublish: string = ''
+  private interfaceSubscribe: string = ''
 
   created () {
-    this.$agent.registerNode(this.node)
-    this.$agent.registerInterface(this.node, this.interface)
+    if (Array.isArray(this.interface)) {
+      this.interfacePublish = this.interface[0]
+      this.interfaceSubscribe = this.interface[1]
+    } else if (typeof this.interface === 'string') {
+      this.interfacePublish = this.interface
+      this.interfaceSubscribe = this.interface
+    }
+    this.$agent.registerNode(this.node.baseTopic)
+    this.$agent.registerInterface(this.baseTopic, this.interfaceSubscribe)
   }
 
   @Watch('state', { deep: true })
@@ -38,11 +46,14 @@ export default class NodeInterfaceBase extends Vue {
   }
 
   get state () {
-    return this.$store.state.nodes[this.node] ? this.$store.state.nodes[this.node][this.interface] : undefined
+    return this.$store.state.nodes[this.node.baseTopic] ? this.$store.state.nodes[this.node.baseTopic][this.interfaceSubscribe] : undefined
+    // let node = this.getNode(this.node)
+    // let state = this.getInterface(this.node, this.interfaceSubscribe)
+    // return node ? state : undefined
   }
 
   get thisNode () {
-    return this.$store.state.nodes[this.node]
+    return this.$store.state.nodes[this.node.baseTopic]
   }
 }
 

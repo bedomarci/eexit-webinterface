@@ -25,7 +25,13 @@ let gameConfig = {
   targetTime: 60,
   defaultLanguage: 'HUN',
   languages: ['HUN', 'ENG'],
-  languageDependentNodes: ['ABC', 'ASD', 'A23']
+  languageDependentNodes: ['ABC', 'ASD', 'A23'],
+  nodes: [
+    {
+      baseTopic: 'MTMETRODIMMER',
+      states: ['INIT', 'MAINTAIN', 'DISABLE']
+    }
+  ]
 }
 
 Vue.use(new MQTTAgentPlugin(), { store: store, config: gameConfig })
