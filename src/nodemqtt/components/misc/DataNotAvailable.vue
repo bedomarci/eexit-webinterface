@@ -16,7 +16,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import ComponentBase from './ComponentBase.vue'
+import ComponentBase from '../ComponentBase.vue'
 import { Prop } from 'vue-property-decorator'
 
 @Component

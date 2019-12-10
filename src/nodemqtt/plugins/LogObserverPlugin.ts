@@ -1,11 +1,12 @@
 import _Vue, { PluginObject } from 'vue'
 import Vuex from 'vuex'
 import EventBus, { PAYLOAD_SAVED } from '../events/EventBus'
+import NodeMQTTPluginOption from '../interfaces/NodeMQTTPluginOptionInterface'
 
 const ARCHIVE_KEY = 'logArchive'
 const ARCHIVE_CAPACITY = 150
 
-export default class LogObserverPlugin implements PluginObject<any> {
+export default class LogObserverPlugin implements PluginObject<NodeMQTTPluginOption> {
   install (Vue: typeof _Vue, { store }) {
     EventBus.$on(PAYLOAD_SAVED, (payload) => {
       if (payload && payload.subTopic === '/log') {

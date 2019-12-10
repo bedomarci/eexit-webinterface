@@ -1,11 +1,12 @@
 import _Vue, { PluginObject } from 'vue'
 import Vuex from 'vuex'
 import EventBus, { START_TIMER, STOP_TIMER } from '../events/EventBus'
+import NodeMQTTPluginOption from '../interfaces/NodeMQTTPluginOptionInterface'
 
 const ARCHIVE_KEY = 'logArchive'
 const ARCHIVE_CAPACITY = 4
 
-export default class TimerClockworkPlugin implements PluginObject<any> {
+export default class TimerClockworkPlugin implements PluginObject<NodeMQTTPluginOption> {
   timers: any[] = []
 
   install (Vue: typeof _Vue, { store, config }) {

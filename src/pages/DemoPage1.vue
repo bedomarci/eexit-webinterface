@@ -13,7 +13,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters } from 'vuex'
 import HelloWorld from '@/components/HelloWorld.vue'
-import HeartbeatIcon from '@/nodemqtt/components/interfaces/HeartbeatIcon.vue'
+import HeartbeatIcon from '@/nodemqtt/components/interface/HeartbeatIcon.vue'
 
   @Component({
     components: {

@@ -3,7 +3,7 @@
   <HeartbeatIcon v-bind:node="node" @click="dialog = true" interface="/hrtbt" ></HeartbeatIcon>
   <v-dialog v-model="dialog" max-width="50%">
     <v-card>
-      <v-card-title class="headline">{{node.baseTopic}}</v-card-title>
+      <v-card-title class="headline">{{node.commonName}}</v-card-title>
       <v-card-text>
         <v-fade-transition>
         <v-simple-table v-if="this.state">
@@ -49,11 +49,11 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import NodeInterfaceBase from '@/nodemqtt/components/interfaces/NodeInterfaceBase.vue'
+import InterfaceBase from './NodeInterfaceBase.vue'
 import { mapGetters, mapState } from 'vuex'
 import moment from 'moment'
 import HeartbeatIcon from './HeartbeatIcon.vue'
-import DataNotAvailable from '../DataNotAvailable.vue'
+import DataNotAvailable from '../misc/DataNotAvailable.vue'
   @Component({
     props: {
 
@@ -64,7 +64,7 @@ import DataNotAvailable from '../DataNotAvailable.vue'
       ...mapGetters('nodes', ['getNode', 'getInterface'])
     }
   })
-export default class HeartbeatDialogIcon extends NodeInterfaceBase {
+export default class HeartbeatDialogIcon extends InterfaceBase {
     dialog : boolean = false
     now: any = moment()
 

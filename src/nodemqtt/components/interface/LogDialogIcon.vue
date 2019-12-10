@@ -10,7 +10,7 @@
             <v-btn icon dark @click="dialog = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>{{node.baseTopic}} log</v-toolbar-title>
+            <v-toolbar-title>{{node.commonName}} log</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <v-btn dark text @click="dialog = false">Close</v-btn>
@@ -20,6 +20,7 @@
           <v-sheet dark class="pa-4 overflow-y-auto" height="100%">
             <p v-for="(item, index) in archive" v-bind:key="index" class="ma-0 caption ">{{ item.data }}</p>
             <div v-bind:id="bottomId"></div>
+            <DataNotAvailable v-model="archive"></DataNotAvailable>
           </v-sheet>
         </v-card>
       </v-dialog>
@@ -29,17 +30,18 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import NodeInterfaceBase from './NodeInterfaceBase.vue'
+import InterfaceBase from './NodeInterfaceBase.vue'
 import { Watch } from 'vue-property-decorator'
 import { mapGetters } from 'vuex'
+import DataNotAvailable from '../misc/DataNotAvailable.vue'
 
   @Component({
-    components: {},
+    components: { DataNotAvailable },
     computed: {
       ...mapGetters('nodes', ['getInterface', 'getNode'])
     }
   })
-export default class LogDialogIcon extends NodeInterfaceBase {
+export default class LogDialogIcon extends InterfaceBase {
     dialog: boolean = false
     log: string = ''
     bottomId: string = ''

@@ -1,15 +1,15 @@
 import _Vue, { PluginObject } from 'vue'
 import mqtt from 'mqtt'
-import Vuex from 'vuex'
 import NodeStoreModule from '../store/NodeStoreModule'
-import MQTTAgent from '../MQTTAgent'
+import MQTTAgent from '../utils/MQTTAgent'
 import HeartbeatObserverPlugin from './HeartbeatObserverPlugin'
 import LogObserverPlugin from './LogObserverPlugin'
 import GameStoreModule from '../store/GameStoreModule'
 import TimerClockworkPlugin from './TimerClockworkPlugin'
 import GameLanguageSetterPlugin from './GameLanguageSetterPlugin'
+import NodeMQTTPluginOption from '../interfaces/NodeMQTTPluginOptionInterface'
 
-export default class MQTTAgentPlugin implements PluginObject<any> {
+export default class MQTTAgentPlugin implements PluginObject<NodeMQTTPluginOption> {
 // export default class MQTTAgentPlugin implements PluginObject<MQTTAgentPluginOptions> {
   private agent: MQTTAgent = new MQTTAgent();
 
@@ -17,7 +17,7 @@ export default class MQTTAgentPlugin implements PluginObject<any> {
     return this.agent.client
   }
 
-  install (Vue: typeof _Vue, options : any) {
+  install (Vue: typeof _Vue, options: NodeMQTTPluginOption) {
     this.agent.store = options.store
     options.store.registerModule('nodes', NodeStoreModule)
     options.store.registerModule('game', GameStoreModule)
@@ -34,6 +34,7 @@ export default class MQTTAgentPlugin implements PluginObject<any> {
   initializeGame ({ store, config }) {
     store.commit('game/registerGame', { gameId: config.gameId })
   }
+
   initializeConnection ({ config }) {
     this.agent.registerTopicPrefix('EEXIT/')
     this.agent.connect(config.server)

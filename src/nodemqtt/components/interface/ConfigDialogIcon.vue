@@ -5,10 +5,10 @@
       <v-icon>mdi-settings</v-icon>
     </v-fade-transition>
   </v-btn>
-  <v-dialog v-model="dialog" persistent max-width="600px">
+  <v-dialog v-model="dialog" max-width="600px">
     <v-card>
       <v-card-title>
-        <span class="headline">{{node.baseTopic}} Configuration</span>
+        <span class="headline">{{node.commonName}} Configuration</span>
       </v-card-title>
       <v-card-text>
         <v-container>
@@ -79,12 +79,11 @@
             <DataNotAvailable v-model="this.state"></DataNotAvailable>
           </v-fade-transition>
         </v-container>
-        <small>*indicates required field</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-        <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+        <v-btn color="blue darken-1" text @click="save()">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -92,8 +91,8 @@
 </template>
 <script lang='ts'>
 import Component from 'vue-class-component'
-import NodeInterfaceBase from './NodeInterfaceBase.vue'
-import DataNotAvailable from '../DataNotAvailable.vue'
+import InterfaceBase from './NodeInterfaceBase.vue'
+import DataNotAvailable from '../misc/DataNotAvailable.vue'
 
   @Component({
     props: {},
@@ -104,8 +103,12 @@ import DataNotAvailable from '../DataNotAvailable.vue'
       // ...mapState('nodes', ['online'])
     }
   })
-export default class ConfigDialogIcon extends NodeInterfaceBase {
+export default class ConfigDialogIcon extends InterfaceBase {
     protected hover: boolean = false
     protected dialog: boolean = false
+
+    save () {
+      this.dialog = false
+    }
 }
 </script>

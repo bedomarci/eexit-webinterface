@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
 import store from './store'
 import MQTTAgentPlugin from './nodemqtt/plugins/MQTTAgentPlugin'
 import vuetify from './plugins/vuetify'
 import router from './plugins/router'
-// import Layout from '@/nodemqtt/layouts/Layout.vue'
-import GameContainer from '@/nodemqtt/layouts/GameContainer.vue'
+import GameContainer from './nodemqtt/layouts/GameContainer.vue'
+import GameConfig from './nodemqtt/interfaces/GameConfigInterface'
+import NodeMQTTPluginOption from './nodemqtt/interfaces/NodeMQTTPluginOptionInterface'
 
 Vue.config.productionTip = false
 
-let gameConfig = {
+let gameConfig: GameConfig = {
   server: {
     // host: 'localhost',
     host: 'broker.orangepixel.hu',
@@ -22,19 +22,29 @@ let gameConfig = {
   },
   gameId: 'secret-subway',
   gameName: 'Secret Subway',
-  targetTime: 60,
+  targetTime: 1000,
   defaultLanguage: 'HUN',
   languages: ['HUN', 'ENG'],
   languageDependentNodes: ['ABC', 'ASD', 'A23'],
+  missions: [
+    {
+      missionId: 'office',
+      targetTime: 900,
+      nodes: ['metro-dimmer']
+    }
+  ],
   nodes: [
     {
+      id: 'metro-dimmer',
+      commonName: 'Metro dimmer',
       baseTopic: 'MTMETRODIMMER',
+      initState: 'INIT',
       states: ['INIT', 'MAINTAIN', 'DISABLE']
     }
   ]
 }
-
-Vue.use(new MQTTAgentPlugin(), { store: store, config: gameConfig })
+let options: NodeMQTTPluginOption = { store: store, config: gameConfig }
+Vue.use(new MQTTAgentPlugin(), options)
 
 new Vue({
   store,

@@ -2,8 +2,9 @@ import _Vue, { PluginObject } from 'vue'
 import Vuex from 'vuex'
 import EventBus, { DEVICE_OFFLINE, DEVICE_ONLINE, SAVING_PAYLOAD } from '../events/EventBus'
 import moment from 'moment'
+import NodeMQTTPluginOption from '../interfaces/NodeMQTTPluginOptionInterface'
 
-export default class HeartbeatObserverPlugin implements PluginObject<any> {
+export default class HeartbeatObserverPlugin implements PluginObject<NodeMQTTPluginOption> {
     private _hearts: any[] = [];
     private _store: Vuex.Store;
 

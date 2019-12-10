@@ -26,8 +26,6 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import AppletBase from '../ComponentBase.vue'
-import { mapGetters, mapMutations, mapState } from 'vuex'
-import EventBus, { START_TIMER, STOP_TIMER } from '@/nodemqtt/events/EventBus'
 
   @Component({
     computed: {

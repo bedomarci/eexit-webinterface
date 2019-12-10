@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Prop, Watch } from 'vue-property-decorator'
 import { mapGetters } from 'vuex'
+import NodeConfig from '../../interfaces/NodeConfigInterface'
 
 const ON_STATE_CHANGE_FUNCTION_NAME = 'onStateChange'
 
@@ -19,11 +20,12 @@ const ON_STATE_CHANGE_FUNCTION_NAME = 'onStateChange'
     }
   }
 })
-export default class NodeInterfaceBase extends Vue {
-  @Prop({ required: true }) private node: Object;
+export default class InterfaceBase extends Vue {
+  @Prop({ required: true }) private node: NodeConfig;
   @Prop({ required: true }) private interface: any;
   private interfacePublish: string = ''
   private interfaceSubscribe: string = ''
+  abstract onStateChange()
 
   created () {
     if (Array.isArray(this.interface)) {
@@ -47,13 +49,14 @@ export default class NodeInterfaceBase extends Vue {
 
   get state () {
     return this.$store.state.nodes[this.node.baseTopic] ? this.$store.state.nodes[this.node.baseTopic][this.interfaceSubscribe] : undefined
-    // let node = this.getNode(this.node)
-    // let state = this.getInterface(this.node, this.interfaceSubscribe)
-    // return node ? state : undefined
   }
 
   get thisNode () {
     return this.$store.state.nodes[this.node.baseTopic]
+  }
+
+  publish (value:any) {
+    this.$agent.publish(this.node.baseTopic + this.interfacePublish, { data: value })
   }
 }
 

@@ -9,7 +9,7 @@
 </template>
 <script lang='ts'>
 import Component from 'vue-class-component'
-import NodeInterfaceBase from './NodeInterfaceBase.vue'
+import InterfaceBase from './NodeInterfaceBase.vue'
 import { mapState } from 'vuex'
 
   @Component({
@@ -20,7 +20,7 @@ import { mapState } from 'vuex'
       ...mapState('nodes', ['online'])
     }
   })
-export default class HeartbeatIcon extends NodeInterfaceBase {
+export default class HeartbeatIcon extends InterfaceBase {
     heartColor = 'red lighten-3'
     heartTimeOut: any
     // dialog: boolean = false
