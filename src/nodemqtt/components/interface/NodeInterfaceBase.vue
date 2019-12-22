@@ -36,7 +36,7 @@ export default class InterfaceBase extends Vue {
       this.interfaceSubscribe = this.interface
     }
     this.$agent.registerNode(this.node.baseTopic)
-    this.$agent.registerInterface(this.baseTopic, this.interfaceSubscribe)
+    this.$agent.registerInterface(this.node.baseTopic, this.interfaceSubscribe)
   }
 
   @Watch('state', { deep: true })

@@ -11,8 +11,8 @@
       </v-col>
     </v-row>
 
-    <v-row>
-      <NodeEssentialsContainer v-bind:node="config.nodes[0]"></NodeEssentialsContainer>
+    <v-row class="scroll-y">
+      <NodeEssentialsContainer v-for="node in config.nodes" v-bind:key="node.id" v-bind:node="node"></NodeEssentialsContainer>
     </v-row>
 
     <v-footer

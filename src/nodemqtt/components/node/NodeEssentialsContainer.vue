@@ -5,9 +5,8 @@
     outlined
   >
     <v-card-text>
-      {{ node.baseTopic }}
+      <div>{{ node.commonName }}</div>
     </v-card-text>
-
     <v-card-actions>
       <HeartbeatDialogIcon v-bind:node="node" interface="/hrtbt" ></HeartbeatDialogIcon>
       <ConfigDialogIcon v-bind:node="node" v-bind:interface="['/cfg', '/cfgecho']" ></ConfigDialogIcon>

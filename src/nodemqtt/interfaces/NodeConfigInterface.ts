@@ -1,7 +1,9 @@
 export default interface NodeConfig {
   id: string,
   commonName: string,
+  description: string,
   baseTopic: string,
   initState: string,
-  states: string[]
+  states: string[],
+  targetTime: number,
 }

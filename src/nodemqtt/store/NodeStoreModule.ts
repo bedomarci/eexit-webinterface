@@ -39,7 +39,11 @@ const NodeStoreModule: Module<any, any> = {
   },
   actions: {
     storeMessage ({ commit, state }, payload: any) {
-      let currentBaseTopic = state._baseTopics.find(baseTopic => payload.topic.startsWith(state._baseTopicPrefix + baseTopic), this)
+      let topicChunks = payload.topic.split('/')
+      let currentBaseTopic = topicChunks[0]
+      if (state._baseTopicPrefix) {
+        currentBaseTopic = topicChunks[1]
+      }
       if (currentBaseTopic !== undefined) {
         if (typeof payload.message === 'string') {
           try {
