@@ -1,10 +1,9 @@
 <template>
-  <div class="text-center">
-
+  <div>
     <v-btn @click="sheet = true" icon x-small>
       <v-icon>mdi-state-machine</v-icon>
     </v-btn>
-    <v-bottom-sheet inset v-model="sheet">
+    <v-bottom-sheet inset v-model="sheet" class="text-center">
       <v-sheet class="text-center">
         <v-toolbar>
           <v-toolbar-title>{{node.commonName}} States</v-toolbar-title>

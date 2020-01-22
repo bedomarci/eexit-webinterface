@@ -1,5 +1,5 @@
 export default interface MissionConfig {
-  missionId:string,
+  id:string,
   nodes: string[],
   targetTime: number,
 }

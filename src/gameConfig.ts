@@ -13,33 +13,33 @@ let gameConfig: GameConfig = {
   },
   gameId: 'secret-subway',
   gameName: 'Secret Subway',
-  targetTime: 1000,
+  targetTime: 75 * 60,
   defaultLanguage: 'HUN',
   languages: ['HUN', 'ENG'],
   languageDependentNodes: ['ABC', 'ASD', 'A23'],
   missions: [
     {
-      missionId: 'office',
+      id: 'office',
       targetTime: 16 * 60,
       nodes: ['metro-edison', 'metro-console', 'metro-drawer', 'metro-nails', 'metro-minimetro', 'metro-player', 'metro-officelamp1', 'metro-officelamp2', 'metro-officelamp3']
     },
     {
-      missionId: 'enginehouse',
+      id: 'enginehouse',
       targetTime: 20 * 60,
       nodes: ['metro-totem', 'metro-disks', 'metro-slot', 'metro-lottery', 'metro-pipe', 'metro-generator', 'metro-generatordisplay']
     },
     {
-      missionId: 'metro',
+      id: 'metro',
       targetTime: 7 * 60,
       nodes: ['metro-metroconsole', 'metro-dimmer']
     },
     {
-      missionId: 'saloon',
+      id: 'saloon',
       targetTime: 15 * 60,
       nodes: ['metro-mtdancefloor', 'metro-door', 'metro-snake', 'metro-statue']
     },
     {
-      missionId: 'boudoir',
+      id: 'boudoir',
       targetTime: 15 * 60,
       nodes: ['metro-scrabble', 'metro-brain', 'metro-elevator', 'metro-elevatorengine']
     }

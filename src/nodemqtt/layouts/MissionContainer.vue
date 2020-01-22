@@ -12,7 +12,8 @@
     </v-row>
 
     <v-row class="scroll-y">
-      <NodeEssentialsContainer v-for="node in config.nodes" v-bind:key="node.id" v-bind:node="node"></NodeEssentialsContainer>
+      <NodeEssentialsContainer v-for="node in missionNodes" v-bind:key="node.id"
+                               v-bind:node="node"></NodeEssentialsContainer>
     </v-row>
 
     <v-footer
@@ -33,14 +34,21 @@ import Component from 'vue-class-component'
 import ComponentBase from '../components/ComponentBase.vue'
 import MissionForecaster from '../components/MissionForecaster.vue'
 import NodeEssentialsContainer from '../components/node/NodeEssentialsContainer.vue'
+import { Prop } from 'vue-property-decorator'
+import GameConfig from '../interfaces/GameConfigInterface'
 
   @Component({
-    components: { MissionForecaster, NodeEssentialsContainer },
-    props: {
-      config: Object
-    }
+    components: { MissionForecaster, NodeEssentialsContainer }
   })
 export default class MissionContainer extends ComponentBase {
+  @Prop({ required: true }) private id : string
+  @Prop({ required: true }) private config : GameConfig
 
+  get missionNodes () {
+    let mission = this.config.missions.find(mission => mission.id === this.id)
+    return this.config.nodes.filter(function (node) {
+      return mission.nodes.includes(node.id)
+    })
+  }
 }
 </script>

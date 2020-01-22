@@ -4,7 +4,7 @@
     <GameContainerSidebar v-bind:config="config"></GameContainerSidebar>
     <v-content>
       <v-container>
-              <MissionContainer v-bind:config="config">
+              <MissionContainer v-bind:config="config" id="office">
 
               </MissionContainer>
       </v-container>
