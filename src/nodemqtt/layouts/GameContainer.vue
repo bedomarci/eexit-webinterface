@@ -4,9 +4,9 @@
     <GameContainerSidebar v-bind:config="config"></GameContainerSidebar>
     <v-content>
       <v-container>
-              <MissionContainer v-bind:config="config" id="office">
-
-              </MissionContainer>
+<!--        <transition name="slide">-->
+          <router-view></router-view>
+<!--        </transition>-->
       </v-container>
     </v-content>
     <GameContainerFooter v-bind:config="config"></GameContainerFooter>
@@ -22,19 +22,20 @@ import GameContainerFooter from './GameContainerFooter.vue'
 import MissionContainer from './MissionContainer.vue'
 import ComponentBase from '../components/ComponentBase.vue'
 
-@Component({
-  components: {
-    MissionContainer,
-    GameContainerHeader,
-    GameContainerSidebar,
-    GameContainerFooter
-  }
-})
+  @Component({
+    components: {
+      MissionContainer,
+      GameContainerHeader,
+      GameContainerSidebar,
+      GameContainerFooter
+    }
+  })
 export default class GameContainer extends ComponentBase {
-  drawer: boolean = false
-  created () {
+    drawer: boolean = false
 
-  }
+    created () {
+
+    }
 }
 
 </script>

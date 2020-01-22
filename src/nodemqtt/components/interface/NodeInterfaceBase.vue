@@ -35,7 +35,6 @@ export default class InterfaceBase extends Vue {
       this.interfacePublish = this.interface
       this.interfaceSubscribe = this.interface
     }
-    this.$agent.registerNode(this.node.baseTopic)
     this.$agent.registerInterface(this.node.baseTopic, this.interfaceSubscribe)
   }
 

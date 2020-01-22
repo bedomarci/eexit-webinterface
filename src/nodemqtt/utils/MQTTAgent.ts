@@ -25,9 +25,9 @@ export default class MQTTAgent {
 
   registerInterface (baseTopic : string, subTopic:string):void {
     let prefix:string = this._store.state.nodes._baseTopicPrefix
-    // this.client.subscribe(prefix + baseTopic + subTopic)
     let subscription = prefix + baseTopic + subTopic
     this._store.commit('nodes/addSubscription', subscription)
+    this.subscribe(subscription)
   }
 
   connect (options: any): void {

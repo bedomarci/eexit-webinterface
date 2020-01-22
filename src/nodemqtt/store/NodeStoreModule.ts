@@ -20,7 +20,6 @@ const NodeStoreModule: Module<any, any> = {
       }
     },
     saveNodeState (state: any, payload: any) {
-      // let subTopic = payload.topic.substr(state._baseTopicPrefix.length + payload.baseTopic.length)
       Vue.set(state[payload.baseTopic], payload.subTopic, payload.message)
     },
     addSubscription (state: any, payload: string) {

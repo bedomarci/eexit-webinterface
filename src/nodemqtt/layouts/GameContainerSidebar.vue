@@ -5,20 +5,14 @@
     clipped
   >
     <v-list dense>
-      <v-list-item link>
+      <v-list-item link v-for="m in config.missions" v-bind:key="m.id" @click="$router.push({ name: 'mission', params: { id: m.id }})">
         <v-list-item-action>
-          <v-icon>mdi-home</v-icon>
+          <v-icon>mdi-seal</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item link>
-        <v-list-item-action>
-          <v-icon>mdi-contact-mail</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Contact</v-list-item-title>
+          <v-list-item-title>
+            {{ m.id }}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -31,10 +25,6 @@ import Component from 'vue-class-component'
 
 @Component
 export default class GameContainerSidebar extends ComponentBase {
-    items: any = [
-      { title: 'Home', icon: 'dashboard' },
-      { title: 'About', icon: 'question_answer' }
-    ]
 }
 </script>
 

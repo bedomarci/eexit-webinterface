@@ -1,29 +1,32 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="d-flex flex-row flex-wrap align-start">
     <v-row dense
            align="center"
            justify="center"
     >
-      <v-col class="col-12">
-        <v-card>
-          <MissionForecaster></MissionForecaster>
+        <v-card class="col-12">
+          <MissionForecaster v-bind:config="config"></MissionForecaster>
         </v-card>
-      </v-col>
     </v-row>
+    <v-container>
+
+    </v-container>
 
     <v-row class="scroll-y">
-      <NodeEssentialsContainer v-for="node in missionNodes" v-bind:key="node.id"
-                               v-bind:node="node"></NodeEssentialsContainer>
+
+      <v-card
+        class="fill-height"
+        outlined
+
+      >
+      </v-card>
     </v-row>
 
-    <v-footer
-      absolute
-    >
-      <v-col class="col-12">
-        <v-card>
-          <MissionForecaster></MissionForecaster>
-        </v-card>
-      </v-col>
+    <v-footer absolute>
+      <v-row class="scroll-y">
+            <NodeEssentialsContainer v-for="node in missionNodes" v-bind:key="node.id"
+                                         v-bind:node="node"></NodeEssentialsContainer>
+      </v-row>
     </v-footer>
 
   </v-container>
@@ -41,11 +44,12 @@ import GameConfig from '../interfaces/GameConfigInterface'
     components: { MissionForecaster, NodeEssentialsContainer }
   })
 export default class MissionContainer extends ComponentBase {
-  @Prop({ required: true }) private id : string
+  // @Prop({ required: true }) private id : string
   @Prop({ required: true }) private config : GameConfig
 
   get missionNodes () {
-    let mission = this.config.missions.find(mission => mission.id === this.id)
+    let missionId = this.$route.params.id
+    let mission = this.config.missions.find(mission => mission.id === missionId)
     return this.config.nodes.filter(function (node) {
       return mission.nodes.includes(node.id)
     })

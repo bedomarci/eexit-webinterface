@@ -2,7 +2,7 @@
   <v-container>
     <v-row no-gutters>
       <v-col class="pa-1  col-2  overline">
-          Global achievement
+        Global achievement
       </v-col>
       <v-col align-self="center">
         <v-progress-linear
@@ -16,7 +16,7 @@
     </v-row>
     <v-row no-gutters>
       <v-col class="pa-1 col-2 overline">
-          Mission achievement
+        Mission achievement
       </v-col>
       <v-col align-self="center">
         <v-progress-linear
@@ -34,17 +34,28 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import ComponentBase from './ComponentBase.vue'
+import { Prop, Watch } from 'vue-property-decorator'
+import NodeConfig from '../interfaces/NodeConfigInterface'
 
-  @Component({
-    props: {
-      config: Object
+@Component
+export default class MissionForecaster extends ComponentBase {
+    globalCurrentAchievement: number = 0
+    globalRecommandedAchievement: number = 50
+    missionCurrentAchievement: number = 10
+    missionRecommandedAchievement: number = 11
+
+    @Watch('elapsedTime', { deep: true })
+    private onTimeChanged (newTime: any, oldTime: any) {
+      this.globalRecommandedAchievement = newTime / this.targetTime * 100
     }
-  })
-export default class GameContainer extends ComponentBase {
-    globalCurrentAchievement: number = 10
-    globalRecommandedAchievement: number = 20
-    missionCurrentAchievement: number = 50
-    missionRecommandedAchievement: number = 70
+
+    get elapsedTime () {
+      return this.$store.state.game[this.config.gameId].elapsedTime
+    }
+
+    get targetTime () {
+      return this.config.targetTime
+    }
 }
 </script>
 

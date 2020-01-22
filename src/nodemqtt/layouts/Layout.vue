@@ -10,7 +10,7 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click="$router.push({ name: 'demo1'})">
+            <v-list-item-title @click="$router.push({ name: 'mission', id: 'office'})">
                 Go to Demo1
             </v-list-item-title>
           </v-list-item-content>
@@ -20,7 +20,7 @@
             <v-icon>mdi-contact-mail</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click="$router.push({ name: 'demo2'})">
+            <v-list-item-title @click="$router.push({ name: 'mission', id: 'enginehouse'})">
                 Go to Demo2
             </v-list-item-title>
           </v-list-item-content>

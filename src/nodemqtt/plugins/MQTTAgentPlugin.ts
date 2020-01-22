@@ -10,7 +10,6 @@ import GameLanguageSetterPlugin from './GameLanguageSetterPlugin'
 import NodeMQTTPluginOption from '../interfaces/NodeMQTTPluginOptionInterface'
 
 export default class MQTTAgentPlugin implements PluginObject<NodeMQTTPluginOption> {
-// export default class MQTTAgentPlugin implements PluginObject<MQTTAgentPluginOptions> {
   private agent: MQTTAgent = new MQTTAgent();
 
   get client (): mqtt.MqttClient {
@@ -25,6 +24,7 @@ export default class MQTTAgentPlugin implements PluginObject<NodeMQTTPluginOptio
     var pluginOption = { ...options, agent: this.agent }
     this.initializeConnection(options)
     this.initializeGame(options)
+    this.registerNodes(options)
     _Vue.use(new HeartbeatObserverPlugin(), pluginOption)
     _Vue.use(new LogObserverPlugin(), pluginOption)
     _Vue.use(new TimerClockworkPlugin(), pluginOption)
@@ -33,6 +33,10 @@ export default class MQTTAgentPlugin implements PluginObject<NodeMQTTPluginOptio
 
   initializeGame ({ store, config }) {
     store.commit('game/registerGame', { gameId: config.gameId })
+  }
+
+  registerNodes ({ config }) {
+    config.nodes.forEach(node => this.agent.registerNode(node.baseTopic))
   }
 
   initializeConnection ({ config }) {

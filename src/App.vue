@@ -77,16 +77,16 @@ export default class App extends Vue {
       password: 'Cirkusz1984',
       clientId: 'eexit_dashboard' + Math.random().toString(16).substr(2, 8)
     })
-    this.$agent.registerTopicPrefix('EEXIT/')
-    this.$agent.registerNode('MTMETRODIMMER')
-    this.$agent.registerNode('MTMETROCONSOLE')
-    this.$agent.registerNode('MTLOTTERY')
-    this.$agent.registerNode('MTMINIMETRO')
-    this.$agent.registerNode('MTEDISON')
-    this.$agent.registerNode('MTDRAWER')
-    this.$agent.registerNode('MTPIPE')
-    this.$agent.subscribe('EEXIT/+/hrtbt')
-    this.$agent.subscribe('EEXIT/+/log')
+    // this.$agent.registerTopicPrefix('EEXIT/')
+    // this.$agent.registerNode('MTMETRODIMMER')
+    // this.$agent.registerNode('MTMETROCONSOLE')
+    // this.$agent.registerNode('MTLOTTERY')
+    // this.$agent.registerNode('MTMINIMETRO')
+    // this.$agent.registerNode('MTEDISON')
+    // this.$agent.registerNode('MTDRAWER')
+    // this.$agent.registerNode('MTPIPE')
+    // this.$agent.subscribe('EEXIT/+/hrtbt')
+    // this.$agent.subscribe('EEXIT/+/log')
   }
 }
 </script>

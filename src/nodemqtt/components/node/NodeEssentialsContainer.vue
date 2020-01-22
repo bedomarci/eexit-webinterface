@@ -1,32 +1,20 @@
 <template>
   <v-card
-    class="mx-auto"
+    class="mx-1"
     max-width="344"
-    outlined
   >
     <v-responsive min-width="120px" height="65px"
     >
-        <v-expand-transition>
-        <div
-          v-if="!overlay"
-          @mouseover="overlay = true"
-        class="ma-2 font-weight-bold caption"
-        >
+        <div class="mx-2 mt-1 font-weight-bold caption">
         {{ node.commonName }}
         </div>
-      </v-expand-transition>
-      <v-expand-transition>
-        <div
-          v-if="overlay"
-        @mouseleave="overlay = false"
-        >
+        <div class="mx-2">
         <HeartbeatDialogIcon class="d-inline" v-bind:node="node" interface="/hrtbt"></HeartbeatDialogIcon>
         <ConfigDialogIcon class="d-inline" v-bind:node="node"
                           v-bind:interface="['/cfg', '/cfgecho']"></ConfigDialogIcon>
-        <LogDialogIcon class="d-inline" v-bind:node="node" interface="/log"></LogDialogIcon>
         <StateControlIcon class="d-inline" v-bind:node="node" interface="/control"></StateControlIcon>
+        <LogDialogIcon class="d-inline" v-bind:node="node" interface="/log"></LogDialogIcon>
         </div>
-      </v-expand-transition>
     </v-responsive>
   </v-card>
 </template>
