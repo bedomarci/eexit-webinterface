@@ -60,7 +60,7 @@ let gameConfig: GameConfig = {
           'continue',
           'show'
         ],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -69,7 +69,7 @@ let gameConfig: GameConfig = {
         commonName: 'Console',
         description: 'Capsule cell in office.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -78,7 +78,7 @@ let gameConfig: GameConfig = {
         commonName: 'Drawer',
         description: 'Desk in office.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'continue'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 3 * 60
       },
       {
@@ -87,7 +87,7 @@ let gameConfig: GameConfig = {
         commonName: 'Nails',
         description: 'Colored nail puzzle in office.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'continue'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 2 * 60
       },
       {
@@ -96,7 +96,7 @@ let gameConfig: GameConfig = {
         commonName: 'Mini metro',
         description: 'Metro mockup in office.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'continue'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 11 * 60
       },
       {
@@ -105,7 +105,7 @@ let gameConfig: GameConfig = {
         commonName: 'Totem',
         description: 'Cable merging cloumn in engine house.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 3 * 60
       },
       {
@@ -114,7 +114,7 @@ let gameConfig: GameConfig = {
         commonName: 'Disks',
         description: 'Rotatable in casino wardrobe.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'level2'],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 3 * 60
       },
       {
@@ -123,7 +123,7 @@ let gameConfig: GameConfig = {
         commonName: 'Slot machine',
         description: 'Key puzzle in casino wardrobe.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend'],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 2 * 60
       },
       {
@@ -132,7 +132,7 @@ let gameConfig: GameConfig = {
         commonName: 'Lottery',
         description: 'Key dispenser in casino wardrobe. ',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'opengate'],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 2 * 60
       },
       {
@@ -141,7 +141,7 @@ let gameConfig: GameConfig = {
         commonName: 'Pipe',
         description: 'Water leveling in engine house.',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend'],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 4 * 60
       },
       {
@@ -150,7 +150,7 @@ let gameConfig: GameConfig = {
         commonName: 'Generator',
         description: 'Wheelmatrix in engine house',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend'],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 6 * 60
       },
       {
@@ -159,7 +159,7 @@ let gameConfig: GameConfig = {
         commonName: 'Generator display',
         description: '3 indicator for Generator',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -168,7 +168,7 @@ let gameConfig: GameConfig = {
         commonName: 'Metro console',
         description: 'Metro calculator dashboard.',
         states: ['init', 'unlock', 'disable', 'maintain', 'WAITING_FOR_APPROVAL', 'gohome', 'goend'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 7 * 60
         // buttons: [
         //   {
@@ -190,7 +190,7 @@ let gameConfig: GameConfig = {
         commonName: 'Dancefloor',
         description: 'B&W tiles.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 12 * 60
       },
       {
@@ -209,7 +209,7 @@ let gameConfig: GameConfig = {
           'level3',
           'level4'
         ],
-        initState: 'suspend',
+        initState: 'SUSPEND',
         targetTime: 0
       },
       {
@@ -218,7 +218,7 @@ let gameConfig: GameConfig = {
         commonName: 'Snake',
         description: 'Wire follow game in saloon.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 3 * 60
       },
       {
@@ -227,7 +227,7 @@ let gameConfig: GameConfig = {
         commonName: 'Statue',
         description: 'Statue of Pallas Athene',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -236,7 +236,7 @@ let gameConfig: GameConfig = {
         commonName: 'Scrabble',
         description: 'Word puzzle in boudoir.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 12 * 60
       },
       {
@@ -245,7 +245,7 @@ let gameConfig: GameConfig = {
         commonName: 'Brain',
         description: 'Talking brain in boudoir.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -262,7 +262,7 @@ let gameConfig: GameConfig = {
           'continue',
           'show'
         ],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -271,7 +271,7 @@ let gameConfig: GameConfig = {
         commonName: 'Office lamp #2',
         description: 'Office smart light',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'continue'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -280,7 +280,7 @@ let gameConfig: GameConfig = {
         commonName: 'Office lamp #3',
         description: 'Office smart light',
         states: ['init', 'unlock', 'disable', 'maintain', 'suspend', 'continue'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -289,7 +289,7 @@ let gameConfig: GameConfig = {
         commonName: 'Dimmer',
         description: 'Metro light dimmer.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -298,7 +298,7 @@ let gameConfig: GameConfig = {
         commonName: 'Player',
         description: 'Metro background music.',
         states: ['init', 'unlock', 'disable', 'maintain'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       },
       {
@@ -307,7 +307,7 @@ let gameConfig: GameConfig = {
         commonName: 'Elevator',
         description: 'Elevator remote door',
         states: ['init', 'unlock', 'disable', 'maintain', 'call', 'arrive', 'fail'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 3 * 60
       },
       {
@@ -316,7 +316,7 @@ let gameConfig: GameConfig = {
         commonName: 'Elevator engine',
         description: 'Elevator engine',
         states: ['init', 'unlock', 'disable', 'maintain', 'goup', 'godown'],
-        initState: 'init',
+        initState: 'INIT',
         targetTime: 0
       }
     ]

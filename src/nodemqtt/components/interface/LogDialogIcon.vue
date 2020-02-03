@@ -55,7 +55,7 @@ export default class LogDialogIcon extends InterfaceBase {
     }
 
     get archive () {
-      return this.$store.state.nodes[this.node] ? this.$store.state.nodes[this.node]['logArchive'] : undefined
+      return this.$store.state.nodes[this.node.baseTopic] ? this.$store.state.nodes[this.node.baseTopic]['logArchive'] : undefined
     }
 
     @Watch('dialog')

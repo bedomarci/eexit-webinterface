@@ -10,6 +10,9 @@ export const STOP_TIMER: string = 'STOP_TIMER'
 export const TIMER_EXPIRED: string = 'TIMER_EXPIRED'
 
 export const LANGUAGE_CHANGED: string = 'LANGUAGE_CHANGED'
+export const INITIALIZE_GAME: string = 'INITIALIZE_GAME'
+export const DISABLE_GAME: string = 'DISABLE_GAME'
+export const MAINTAIN_GAME: string = 'MAINTAIN_GAME'
 
 class EventBus extends Vue {
 }

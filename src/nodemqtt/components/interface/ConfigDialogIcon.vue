@@ -52,27 +52,6 @@
             <v-col cols="12" sm="6" md="4">
               <v-text-field v-model="this.state.subnet" label="Subnet IP Address" ></v-text-field>
             </v-col>
-
-            <v-col cols="12">
-              <v-text-field label="Email*" required></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field label="Password*" type="password" required></v-text-field>
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-select
-                :items="['0-17', '18-29', '30-54', '54+']"
-                label="Age*"
-                required
-              ></v-select>
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-autocomplete
-                :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                label="Interests"
-                multiple
-              ></v-autocomplete>
-            </v-col>
           </v-row>
           </v-fade-transition>
           <v-fade-transition>
@@ -108,6 +87,7 @@ export default class ConfigDialogIcon extends InterfaceBase {
     protected dialog: boolean = false
 
     save () {
+      this.publish(this.state)
       this.dialog = false
     }
 }
