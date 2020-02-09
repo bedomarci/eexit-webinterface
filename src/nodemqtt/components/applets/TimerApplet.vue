@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import AppletBase from '../../components/ComponentBase.vue'
+import ComponentBase from '../../components/ComponentBase.vue'
 import { mapGetters, mapState } from 'vuex'
 import EventBus, { START_TIMER, STOP_TIMER } from '../../events/EventBus'
 
@@ -29,7 +29,7 @@ import EventBus, { START_TIMER, STOP_TIMER } from '../../events/EventBus'
     // ...mapMutations('game', ['doSomething'])
     }
   })
-export default class TimerApplet extends AppletBase {
+export default class TimerApplet extends ComponentBase {
   toggleTimer () {
     this.context.isTimerRunning ? this.stopTimer() : this.startTimer()
   }

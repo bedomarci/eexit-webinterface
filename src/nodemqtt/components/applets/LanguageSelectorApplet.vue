@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import AppletBase from '../ComponentBase.vue'
+import ComponentBase from '../ComponentBase.vue'
 
   @Component({
     computed: {
@@ -33,7 +33,7 @@ import AppletBase from '../ComponentBase.vue'
     methods: {
     }
   })
-export default class LanguageSelectorApplet extends AppletBase {
+export default class LanguageSelectorApplet extends ComponentBase {
   selectLanguage (lang:string) {
     this.$store.dispatch('game/selectLanguage', { gameId: this.config.gameId, language: lang })
   }

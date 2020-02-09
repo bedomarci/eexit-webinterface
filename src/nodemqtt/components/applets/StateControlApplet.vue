@@ -8,12 +8,12 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import AppletBase from '../../components/ComponentBase.vue'
+import ComponentBase from '../../components/ComponentBase.vue'
 import { mapGetters, mapState } from 'vuex'
 import EventBus, { DISABLE_GAME, INITIALIZE_GAME, MAINTAIN_GAME } from '../../events/EventBus'
 
   @Component
-export default class TimerApplet extends AppletBase {
+export default class TimerApplet extends ComponentBase {
   initAll () {
     this.config.nodes.forEach(node => this.$agent.publish(node.baseTopic + '/control', { data: node.initState }))
     EventBus.$emit(INITIALIZE_GAME)

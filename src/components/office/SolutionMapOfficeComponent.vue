@@ -1,0 +1,44 @@
+<template>
+<div>
+  <v-row v-if="solution">
+    <v-col cols="2" v-for="n in 6" v-bind:key="n" class="ma-0 pa-0 text-center" >
+      <v-btn text icon large>
+        <v-icon x-large v-if="solution[n-1]">mdi-lightbulb</v-icon>
+        <v-icon x-large v-if="!solution[n-1]">mdi-lightbulb-outline</v-icon>
+      </v-btn>
+    </v-col>
+  </v-row>
+  <v-row v-if="!solution">
+    <v-col cols="2" v-for="n in 6" v-bind:key="n" class="ma-0 pa-0 text-center" >
+      <v-btn text icon large>
+        <v-icon x-large>mdi-checkbox-blank-circle-outline</v-icon>
+      </v-btn>
+    </v-col>
+  </v-row>
+  <v-row align="center">
+  <v-col cols="2" v-for="n in 6" v-bind:key="n" class="ma-0 py-0 px-2 text-center caption">
+    {{solutionLabel[n-1]}}
+  </v-col>
+  </v-row>
+</div>
+</template>
+
+<script lang="ts">
+import Component from 'vue-class-component'
+import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
+
+@Component
+export default class SolutionMapOfficeComponent extends ComponentBase {
+  solutionLabel: string[] = ['aaa a a  a  abc1', 'aaa a a  a  abc2', 'aaa a a  a  abc3', 'aaa a a  a  abc4', 'aaa a a  a  abc5', 'aaa a a  a  abc6']
+
+  created () {
+    this.$agent.registerInterface('MTMINIMETRO', '/solution')
+  }
+
+  get solution () {
+    return this.$store.state.nodes['MTMINIMETRO']['/solution']
+    // return [true, false, true, true, false, false]
+    // return false
+  }
+}
+</script>
