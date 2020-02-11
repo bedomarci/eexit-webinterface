@@ -13,6 +13,16 @@
         <ConsoleOfficeComponent v-bind:config="config"></ConsoleOfficeComponent>
       </v-card>
 
+      <v-card class="col-6">
+        <MiniMetroKeypadOfficeComponent v-bind:config="config"></MiniMetroKeypadOfficeComponent>
+      </v-card>
+      <v-card class="col-6">
+        <NailOfficeComponent v-bind:config="config"></NailOfficeComponent>
+      </v-card>
+      <v-card class="col-6">
+        <DrawerOfficeComponent v-bind:config="config"></DrawerOfficeComponent>
+      </v-card>
+
     </v-row>
 
     <v-footer absolute>
@@ -32,11 +42,14 @@ import MissionForecaster from '../components/MissionForecaster.vue'
 import NodeEssentialsContainer from '../components/node/NodeEssentialsContainer.vue'
 import SolutionMapOfficeComponent from '../../components/office/SolutionMapOfficeComponent.vue'
 import ConsoleOfficeComponent from '../../components/office/ConsoleOfficeComponent.vue'
+import MiniMetroKeypadOfficeComponent from '../../components/office/MiniMetroKeypadOfficeComponent.vue'
+import NailOfficeComponent from '../../components/office/NailOfficeComponent.vue'
+import DrawerOfficeComponent from '../../components/office/DrawerOfficeComponent.vue'
 import { Prop } from 'vue-property-decorator'
 import GameConfig from '../interfaces/GameConfigInterface'
 
   @Component({
-    components: { MissionForecaster, NodeEssentialsContainer, SolutionMapOfficeComponent, ConsoleOfficeComponent }
+    components: { MissionForecaster, NodeEssentialsContainer, SolutionMapOfficeComponent, ConsoleOfficeComponent, MiniMetroKeypadOfficeComponent, NailOfficeComponent, DrawerOfficeComponent }
   })
 export default class MissionContainer extends ComponentBase {
     // @Prop({ required: true }) private id : string

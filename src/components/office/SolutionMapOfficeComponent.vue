@@ -3,8 +3,8 @@
   <v-row v-if="solution">
     <v-col cols="2" v-for="n in 6" v-bind:key="n" class="ma-0 pa-0 text-center" >
       <v-btn text icon large>
-        <v-icon x-large v-if="solution[n-1]">mdi-lightbulb</v-icon>
-        <v-icon x-large v-if="!solution[n-1]">mdi-lightbulb-outline</v-icon>
+        <v-icon x-large v-if="!solution['array'][n-1]">mdi-lightbulb</v-icon>
+        <v-icon x-large v-if="solution['array'][n-1]">mdi-lightbulb-outline</v-icon>
       </v-btn>
     </v-col>
   </v-row>
@@ -29,14 +29,14 @@ import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
 
 @Component
 export default class SolutionMapOfficeComponent extends ComponentBase {
-  solutionLabel: string[] = ['aaa a a  a  abc1', 'aaa a a  a  abc2', 'aaa a a  a  abc3', 'aaa a a  a  abc4', 'aaa a a  a  abc5', 'aaa a a  a  abc6']
+  solutionLabel: string[] = ['Drawer', 'Nails', 'Map', 'Mirror', 'Colors', 'Encryption']
 
   created () {
-    this.$agent.registerInterface('MTMINIMETRO', '/solution')
+    this.$agent.registerInterface('MTEDISON', '/edison')
   }
 
   get solution () {
-    return this.$store.state.nodes['MTMINIMETRO']['/solution']
+    return this.$store.state.nodes['MTEDISON']['/edison']
     // return [true, false, true, true, false, false]
     // return false
   }
