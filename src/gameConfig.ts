@@ -1,4 +1,5 @@
 import GameConfig from './nodemqtt/interfaces/GameConfigInterface'
+import c from './components/controllers'
 
 let gameConfig: GameConfig = {
   server: {
@@ -21,27 +22,32 @@ let gameConfig: GameConfig = {
     {
       id: 'office',
       targetTime: 16 * 60,
-      nodes: ['metro-edison', 'metro-console', 'metro-drawer', 'metro-nails', 'metro-minimetro', 'metro-player', 'metro-officelamp1', 'metro-officelamp2', 'metro-officelamp3']
+      nodes: ['metro-edison', 'metro-console', 'metro-drawer', 'metro-nails', 'metro-minimetro', 'metro-player', 'metro-officelamp1', 'metro-officelamp2', 'metro-officelamp3'],
+      controllers: [c.SolutionMapOfficeComponent, c.ConsoleOfficeComponent, c.MiniMetroKeypadOfficeComponent, c.NailOfficeComponent, c.DrawerOfficeComponent]
     },
     {
       id: 'enginehouse',
       targetTime: 20 * 60,
-      nodes: ['metro-totem', 'metro-disks', 'metro-slot', 'metro-lottery', 'metro-pipe', 'metro-generator', 'metro-generatordisplay']
+      nodes: ['metro-totem', 'metro-disks', 'metro-slot', 'metro-lottery', 'metro-pipe', 'metro-generator', 'metro-generatordisplay'],
+      controllers: [c.DrawerOfficeComponent, c.NailOfficeComponent]
     },
     {
       id: 'metro',
       targetTime: 7 * 60,
-      nodes: ['metro-metroconsole', 'metro-dimmer']
+      nodes: ['metro-metroconsole', 'metro-dimmer'],
+      controllers: []
     },
     {
       id: 'saloon',
       targetTime: 15 * 60,
-      nodes: ['metro-mtdancefloor', 'metro-door', 'metro-snake', 'metro-statue']
+      nodes: ['metro-mtdancefloor', 'metro-door', 'metro-snake', 'metro-statue'],
+      controllers: []
     },
     {
       id: 'boudoir',
       targetTime: 15 * 60,
-      nodes: ['metro-scrabble', 'metro-brain', 'metro-elevator', 'metro-elevatorengine']
+      nodes: ['metro-scrabble', 'metro-brain', 'metro-elevator', 'metro-elevatorengine'],
+      controllers: []
     }
   ],
   nodes:

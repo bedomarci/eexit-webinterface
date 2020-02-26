@@ -16,7 +16,7 @@ import Component from 'vue-class-component'
 import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
 
   @Component
-export default class NailOfficeComponent extends ComponentBase {
+export default class DrawerOfficeComponent extends ComponentBase {
   created () {
     this.$agent.registerInterface('MTDRAWER', '/PORT1')
   }

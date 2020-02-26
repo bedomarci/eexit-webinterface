@@ -3,11 +3,9 @@
     <GameContainerHeader v-bind:config="config"></GameContainerHeader>
     <GameContainerSidebar v-bind:config="config"></GameContainerSidebar>
     <v-content>
-      <v-container>
-<!--        <transition name="slide">-->
-          <router-view></router-view>
-<!--        </transition>-->
-      </v-container>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </v-content>
     <GameContainerFooter v-bind:config="config"></GameContainerFooter>
   </v-app>

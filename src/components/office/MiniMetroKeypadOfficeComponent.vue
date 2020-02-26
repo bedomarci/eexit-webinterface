@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row class="px-6">
       <v-col cols="2" v-for="n in 6" v-bind:key="n" >
         <v-btn x-large block depressed>
           {{keyBuffer[n-1]}}
@@ -8,7 +8,7 @@
       </v-col>
     </v-row>
     <v-row align="center" class="text-left">
-      <v-col v-for="(helper, i) in helpers" v-bind:key="i" cols="6" class="ma-0 px-4 py-2 text-left caption">
+      <v-col v-for="(helper, i) in helpers" v-bind:key="i" cols="6" class="ma-0 px-6 py-2 text-left caption">
         {{helper}}
       </v-col>
     </v-row>
