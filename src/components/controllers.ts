@@ -11,11 +11,11 @@ import SolutionMapOfficeComponent from './office/SolutionMapOfficeComponent.vue'
 // import TravelMetroComponent from './metro/TravelMetroComponent.vue'
 
 // Enginehouse
-// import GeneratorEngineHouseComponent from './enginehouse/GeneratorEngineHouseComponent.vue'
-// import KeyMachineEngineHouseComponent from './enginehouse/KeyMachineEngineHouseComponent.vue'
-// import SocketConsoleEngineHouseComponent from './enginehouse/SocketConsoleEngineHouseComponent.vue'
-// import SteamEngineHouseComponent from './enginehouse/SteamEngineHouseComponent.vue'
-// import SummaryEngineHouseComponent from './enginehouse/SummaryEngineHouseComponent.vue'
+import GeneratorEngineHouseComponent from './enginehouse/GeneratorEngineHouseComponent.vue'
+import KeyMachineEngineHouseComponent from './enginehouse/KeyMachineEngineHouseComponent.vue'
+import SocketConsoleEngineHouseComponent from './enginehouse/SocketConsoleEngineHouseComponent.vue'
+import SteamEngineHouseComponent from './enginehouse/SteamEngineHouseComponent.vue'
+import SummaryEngineHouseComponent from './enginehouse/SummaryEngineHouseComponent.vue'
 
 let controllers:any = {}
 
@@ -27,15 +27,15 @@ controllers.NailOfficeComponent = NailOfficeComponent
 controllers.SolutionMapOfficeComponent = SolutionMapOfficeComponent
 
 // // Metro
-// module.exports.CalculatorMetroComponent = CalculatorMetroComponent
-// module.exports.PanicMetroComponent = PanicMetroComponent
-// module.exports.TravelMetroComponent = TravelMetroComponent
+// controllers.CalculatorMetroComponent = CalculatorMetroComponent
+// controllers.PanicMetroComponent = PanicMetroComponent
+// controllers.TravelMetroComponent = TravelMetroComponent
 
 // // Enginehouse
-// module.exports.GeneratorEngineHouseComponent = GeneratorEngineHouseComponent
-// module.exports.KeyMachineEngineHouseComponent = KeyMachineEngineHouseComponent
-// module.exports.SocketConsoleEngineHouseComponent = SocketConsoleEngineHouseComponent
-// module.exports.SteamEngineHouseComponent = SteamEngineHouseComponent
-// module.exports.SummaryEngineHouseComponent = SummaryEngineHouseComponent
+controllers.GeneratorEngineHouseComponent = GeneratorEngineHouseComponent
+controllers.KeyMachineEngineHouseComponent = KeyMachineEngineHouseComponent
+controllers.SocketConsoleEngineHouseComponent = SocketConsoleEngineHouseComponent
+controllers.SteamEngineHouseComponent = SteamEngineHouseComponent
+controllers.SummaryEngineHouseComponent = SummaryEngineHouseComponent
 
 export default controllers

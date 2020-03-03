@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
+import GameControllerBase from '../../nodemqtt/components/GameControllerBase.vue'
 
   @Component
-export default class NailOfficeComponent extends ComponentBase {
+export default class NailOfficeComponent extends GameControllerBase {
   colors: string[] = ['red', 'blue', 'orange', 'green', 'white'];
   created () {
     this.$agent.registerInterface('MTNAILS', '/snsr')

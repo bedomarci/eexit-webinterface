@@ -29,7 +29,7 @@ let gameConfig: GameConfig = {
       id: 'enginehouse',
       targetTime: 20 * 60,
       nodes: ['metro-totem', 'metro-disks', 'metro-slot', 'metro-lottery', 'metro-pipe', 'metro-generator', 'metro-generatordisplay'],
-      controllers: [c.DrawerOfficeComponent, c.NailOfficeComponent]
+      controllers: [c.GeneratorEngineHouseComponent, c.KeyMachineEngineHouseComponent, c.SocketConsoleEngineHouseComponent, c.SteamEngineHouseComponent, c.SummaryEngineHouseComponent]
     },
     {
       id: 'metro',

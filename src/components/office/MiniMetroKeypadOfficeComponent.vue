@@ -17,11 +17,11 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
+import GameControllerBase from '../../nodemqtt/components/GameControllerBase.vue'
 import { Watch } from 'vue-property-decorator'
 
   @Component
-export default class MiniMetroKeypadOfficeComponent extends ComponentBase {
+export default class MiniMetroKeypadOfficeComponent extends GameControllerBase {
     solutionLabel: string[] = ['Drawer', 'Nails', 'Map', 'Mirror', 'Colors', 'Encryption']
 
     keyBuffer : string[] =['_', '_', '_', '_', '_', '_'];

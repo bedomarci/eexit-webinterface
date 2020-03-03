@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
+import GameControllerBase from '../../nodemqtt/components/GameControllerBase.vue'
 import { mapState } from 'vuex'
 
   @Component({
@@ -35,7 +35,7 @@ import { mapState } from 'vuex'
       })
     }
   })
-export default class ConsoleOfficeComponent extends ComponentBase {
+export default class ConsoleOfficeComponent extends GameControllerBase {
     CAPSULE_GLARE = 0;
     CAPSULE_GLOW = 1;
     CAPSULE_SENSOR = 2;
@@ -53,7 +53,6 @@ export default class ConsoleOfficeComponent extends ComponentBase {
 
     created () {
       this.$agent.registerInterface('MTCONSOLE', '/porta')
-      console.log(this.mtconsole)
     }
 }
 </script>

@@ -25,10 +25,10 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import ComponentBase from '../../nodemqtt/components/ComponentBase.vue'
+import GameControllerBase from '../../nodemqtt/components/GameControllerBase.vue'
 
 @Component
-export default class SolutionMapOfficeComponent extends ComponentBase {
+export default class SolutionMapOfficeComponent extends GameControllerBase {
   solutionLabel: string[] = ['Drawer', 'Nails', 'Map', 'Mirror', 'Colors', 'Encryption']
 
   created () {
